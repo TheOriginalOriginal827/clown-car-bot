@@ -17,34 +17,7 @@ bot = discord.Bot()
 # when the bot is online.
 @bot.event
 async def on_ready():
-    Channel = bot.get_channel(1195103342301548575)
-    text= "Reaction Roles! \n(React with specific emoji to get a role)\n\n👓  - Informed Clown | Get announcement notifications\n\n\🛠️  - Aspiring Car Manufacturer | Get special information about how we make games\n\n🎨  - Artistic Clown | Post your art and other projects in the Artistic Clowning Channels\n\n🌑  - Sewer Clown | For lurkers"
-    Moji = await Channel.send(text)
-    await Moji.add_reaction('👓')
-    await Moji.add_reaction('🛠️')
-    await Moji.add_reaction('🎨')
-    await Moji.add_reaction('🌑')
-
     print(f'{bot.user} is online and ready!')
-
-@bot.event
-async def on_reaction_add(reaction, user):
-    Channel = bot.get_channel(1195103342301548575)
-    if reaction.message.channel.id != Channel.id:
-        return
-    if reaction.emoji == "👓":
-      Role = discord.utils.get(user.server.roles, name="Informed Clowns")
-      await user.add_roles(Role)
-    elif reaction.emoji == "🛠️":
-      Role = discord.utils.get(user.server.roles, name="Aspiring Car Manufacturers")
-      await user.add_roles(Role)
-    elif reaction.emoji == "🎨":
-      Role = discord.utils.get(user.server.roles, name="Artistic Clowns")
-      await user.add_roles(Role)
-    elif reaction.emoji == "🌑":
-      Role = discord.utils.get(user.server.roles, name="Sewer Clowns")
-      await user.add_roles(Role)
-
 
 def restart_bot():
     os.execv(sys.executable, ['python'] + sys.argv)
